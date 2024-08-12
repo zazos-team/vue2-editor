@@ -1,6 +1,6 @@
 /*!
- * vue2-editor v2.10.3 
- * (c) 2021 David Royer
+ * vue2-editor v2.10.4 
+ * (c) 2023 David Royer
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -621,9 +621,9 @@
     },
     methods: {
       initializeEditor: function initializeEditor() {
+        this.handleInitialContent();
         this.setupQuillEditor();
         this.checkForCustomImageHandler();
-        this.handleInitialContent();
         this.registerEditorEventListeners();
         this.$emit("ready", this.quill);
       },
@@ -688,7 +688,7 @@
         });
       },
       handleInitialContent: function handleInitialContent() {
-        if (this.value) this.quill.root.innerHTML = this.value; // Set initial editor content
+        if (this.value) this.$refs.quillContainer.innerHTML = this.value; // Set initial editor content
       },
       handleSelectionChange: function handleSelectionChange(range, oldRange) {
         if (!range && oldRange) this.$emit("blur", this.quill);else if (range && !oldRange) this.$emit("focus", this.quill);
@@ -853,7 +853,7 @@
       undefined
     );
 
-  var version = "2.10.3"; // Declare install function executed by Vue.use()
+  var version = "2.10.4"; // Declare install function executed by Vue.use()
 
   function install(Vue) {
     if (install.installed) return;
