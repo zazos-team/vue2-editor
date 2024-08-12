@@ -168,8 +168,7 @@ export default {
     },
 
     handleTextChange(delta, oldContents) {
-      const editorContent =
-        this.quill.getHTML() === "<p><br></p>" ? "" : this.quill.getHTML();
+      const editorContent = this.quill.getHTML();
       this.$emit("input", editorContent);
 
       if (this.useCustomImageHandler)
